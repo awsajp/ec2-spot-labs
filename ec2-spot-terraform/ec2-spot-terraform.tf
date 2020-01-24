@@ -16,27 +16,14 @@ provider "aws" {
   profile                 = "${var.profile}"
 }
 
-
-resource "aws_instance" "web" {
-  ami           = "ami-062f7200baf2fa504"
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "HelloWorld"
-  }
-}
-
-resource "aws_launch_template" "spot-demo-lt" {
-  name = "spot-demo-lt"
+resource "aws_launch_template" "ec2-spot-demo-lt" {
+  name = "ec2-spot-demo-lt"
 
 
   image_id = "ami-062f7200baf2fa504"
 
 
   instance_type = "t3.micro"
-
-  key_name = "awsajp_keypair"
-
 
   monitoring {
     enabled = true
@@ -51,14 +38,14 @@ resource "aws_launch_template" "spot-demo-lt" {
     resource_type = "instance"
 
     tags = {
-      Name = "test"
+      Name = "ec2-spot-demo-lt"
     }
   }
 
 }
 
 
-resource "aws_autoscaling_group" "spot-demo-asg" {
+resource "aws_autoscaling_group" "ec2-spot-demo-asg" {
   availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c", "us-east-1d", "us-east-1e", "us-east-1f"]
   desired_capacity   = 3
   max_size           = 6
@@ -67,7 +54,7 @@ resource "aws_autoscaling_group" "spot-demo-asg" {
   mixed_instances_policy {
     launch_template {
       launch_template_specification {
-        launch_template_id = "${aws_launch_template.spot-demo-lt.id}"
+        launch_template_id = "${aws_launch_template.ec2-spot-demo-lt.id}"
         version = "$Default"
       }
 
@@ -78,7 +65,7 @@ resource "aws_autoscaling_group" "spot-demo-asg" {
 
       override {
         instance_type = "c4.large"
-        weighted_capacity = "2"
+        weighted_capacity = "1"
       }
     }
     
