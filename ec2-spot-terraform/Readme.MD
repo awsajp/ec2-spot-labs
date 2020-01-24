@@ -2,9 +2,12 @@
 
 ## Contents   
 
-It creates the following 
-EC2 Launch Template
-EC2 Auto Scaling Group with Mixed Instance Group with Spot and On-Demand Instance
+The Terraform template creates the following 
+
+**EC2 Launch Template**
+
+**EC2 Auto Scaling Group with Mixed Instance Group with Spot and On-Demand Instance**
+
 
 ## Setup Commands
 
