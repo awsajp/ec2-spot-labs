@@ -1,4 +1,6 @@
-## Sample terraform code for AWS to create Launch Templates and ASG with Mixed Instance Group
+## This is a Sample terraform code for AWS to create Launch Templates and ASG with Mixed Instance Group
+
+
 
 
 
