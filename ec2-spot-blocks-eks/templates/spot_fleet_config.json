@@ -1,0 +1,26 @@
+{
+  "IamFleetRole": "arn:aws:iam::000474600478:role/aws-ec2-spot-fleet-tagging-role",
+  "AllocationStrategy": "SPOT_ALLOCATIION_STRATEGY",
+  "TargetCapacity": SPOTFLEET_TARGET_CAPACITY,
+  "TerminateInstancesWithExpiration": true,
+  "Type": "maintain",
+  "OnDemandTargetCapacity": 0,
+  "LaunchTemplateConfigs": [
+    {
+      "LaunchTemplateSpecification": {
+        "LaunchTemplateId": "EKS_NODEGROUP_ASG_LT",
+        "Version": "ASG_LT_VERSION_2"
+      },
+      "Overrides": [
+        {
+          "WeightedCapacity": 1,
+          "SubnetId": "EKS_VPC_PUB_SUBNET_1"
+        },
+        {
+          "WeightedCapacity": 1,
+          "SubnetId": "EKS_VPC_PUB_SUBNET_2"
+        }
+      ]
+    }
+  ]
+}
