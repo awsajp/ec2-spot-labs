@@ -1,42 +1,46 @@
-## EC2 Spot Workshop : ECS_Cluster_Auto_Scaling
+## ASG with Spot Blocks for an existing EKS Cluster
 
 In this workshop, you will deploy the following:
 
-### Step1 :  Create a Launch Template with ECS optimized AMI and with user data configuring ECS Cluster  
-TBD
-### Step2 : Create a ASG for only OD instances i.e. ecs-fargate-cluster-autoscale-asg-od with MIN 0 and MAX 10
-TBD
-### Step3 : Create a Capacity Provider using this ASG i.e. od-capacity_provider_3  with Managed Scaling Enabled with target capacity of 100
-TBD
-### Step4 : Create a ASG for pnly Spot instances i.e. ecs-fargate-cluster-autoscale-asg-spot)  with MIN 0 and MAX 10
-TBD
-
-### Step5 : Create a Capacity Provider using this ASG i.e. spot-capacity_provider_3 with Managed Scaling Enabled with target capacity of 100
+### Step1 :  Create a New Version (say V2) of Launch Template Default Version (say V1) from the ASG created by EKS Node Group
+This New Version V2 adds the following Tags in this new version
+ KEY                                               VALUE
+eksctl.cluster.k8s.io/v1alpha1/cluster-name      eksworkshop-eksctl	 
+alpha.eksctl.io/cluster-name	                 eksworkshop-eksctl	 
+k8s.io/cluster-autoscaler/eksworkshop-eksctl     owned	 
+k8s.io/cluster-autoscaler/enabled          	     true 
+kubernetes.io/cluster/eksworkshop-eksctl 	     owned
 
 
-### Step6 : Create an ECS cluster (i.e. EcsFargateCluster) with above two capacity providers and with a default capacity provider strategy
+### Step2 : Create a New Version (say V3) from Above V2 of Launch Template
+This New Version V3 adds the following spot block configuration
+{  
+    "InstanceMarketOptions": {
+    "MarketType": "spot",
+    "SpotOptions": {
+      "SpotInstanceType": "one-time",
+      "BlockDurationMinutes": 60,
+      "InstanceInterruptionBehavior": "terminate"
+    }
+  } 
+ }
 
-The default strategy is od-capacity_provider_3,base=1,weight=1  which means any tasks/services will be deployed in OD if strategy is not explicitly specified while launching them
 
-### Step7 : Add default fargate capacity providers i.e. FARGATE and FARGATE-SPOT to the above cluster
-TBD
-### Step8 :Create a task definition for fargate i.e. webapp-fargate-task
-TBD
-### Step9 :Create a task definition for EC2 i.e. webapp-ec2-task
-TBD
-### Step10 : Deployed 6 Services as follows
-TBD
-Deploy a service i.e. webapp-ec2-service-od (with 2 tasks) to launch tasks ONLY on OD Capacity Providers
-a.	2 tasks gets deployed on OD instances launched from od-capacity_provider_3  
-Deploy a service i.e. webapp-ec2-service-spot (with 2 tasks) to launch tasks ONLY on Spot Capacity Providers
-a.	2 tasks gets deployed on Spot instances launched from spot-capacity_provider_3
-Deploy a service i.e. webapp-ec2-service-mix (with 6 tasks) to launch tasks on both OD(weight=1)  and Spot (weight=3) Capacity Providers
-a.	2 tasks on OD instances from od-capacity_provider_3  and 4 tasks on Spot instances from spot-capacity_provider_3
-Deploy a service i.e. webapp-fargate-service-fargate (with 2 tasks) to launch tasks ONLY on FARGATE Capacity Provider
-a.	2 tasks gets deployed on FARGATE
-Deploy a service i.e. webapp-fargate-service-fargate-spot (with 2 tasks) to launch tasks ONLY FARGATE-SPOT Capacity Provider
-a.	2 tasks gets deployed on FARGATE
-Deploy a service i.e. webapp-fargate-service--mix (with 4 tasks) to launch tasks on both FARGATE(weight=3) and FARGATE-SPOT (weight=1)
-a.	3 tasks gets deployed on FARGATE  and 1 tasks on FARGATE-SPOT
+### Step3 : Create a Spot Fleet using launch Template Version V2
+This is used for simulating the Spot Interruption. The Instances from this spot fleet will join the EKS clsuter
+
+### Step4 : Create an ASG using launch Template Version V3
+The ASG creates the spot block instances which will join the cluster
+
+### Step5 : Create a label to the new spot block instances created from Step4
+kubectl label nodes $EC2_SPOT_BLOCK_PRIVATE_IP_DNS  spotsa=jp
+
+### Step6 : Configure pods to be deplpoyed on to these spot block instances / nodes using NodeSelector
+
+      nodeSelector:
+        spotsa: jp
+        
+### Step7 : Deploy the pods into K8S kubectl apply -f ./monte-carlo-pi-service.yml
+
 
 ### Workshop Cleanup
