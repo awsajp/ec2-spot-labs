@@ -1,0 +1,7 @@
+#!/bin/bash
+
+yum install httpd -y
+chkconfig httpd on
+instanceid=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+echo "Hello from instance id $instanceid" > /var/www/html/index.html
+service httpd start

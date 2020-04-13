@@ -1,0 +1,104 @@
+{
+    "SpotOptions": {
+        "AllocationStrategy": "capacity-optimized", 
+        "InstanceInterruptionBehavior": "terminate", 
+        "SingleInstanceType": true, 
+        "SingleAvailabilityZone": true
+    }, 
+    "OnDemandOptions": {
+        "AllocationStrategy": "prioritized", 
+        "CapacityReservationOptions": {
+            "UsageStrategy": "use-capacity-reservations-first"
+        }, 
+        "SingleInstanceType": true, 
+        "SingleAvailabilityZone": true
+    }, 
+    "LaunchTemplateConfigs": [
+        {
+            "LaunchTemplateSpecification": {
+                "LaunchTemplateName": "ec2-fleet-lt", 
+                "Version": "1"
+            }, 
+            "Overrides": [
+                       {
+                          "InstanceType": "m4.large",
+                          "SubnetId": "subnet-764d7d11",
+                          "WeightedCapacity": 1
+                       },
+                       {
+                          "InstanceType": "m4.large",
+                          "SubnetId": "subnet-a2c2fd8c",
+                          "WeightedCapacity": 1
+                       },
+                       {
+                          "InstanceType": "m4.large",
+                          "SubnetId": "subnet-cb26e686",
+                          "WeightedCapacity": 1
+                       },                       
+                       {
+                          "InstanceType": "m5.large",
+                          "SubnetId": "subnet-764d7d11",
+                          "WeightedCapacity": 1
+                       },
+                       {
+                          "InstanceType": "m5.large",
+                          "SubnetId": "subnet-a2c2fd8c",
+                          "WeightedCapacity": 1
+                       },
+                       {
+                          "InstanceType": "m5.large",
+                          "SubnetId": "subnet-cb26e686",
+                          "WeightedCapacity": 1
+                       }, 
+                       {
+                          "InstanceType": "r4.large",
+                          "SubnetId": "subnet-764d7d11",
+                          "WeightedCapacity": 1
+                       },
+                       {
+                          "InstanceType": "r4.large",
+                          "SubnetId": "subnet-a2c2fd8c",
+                          "WeightedCapacity": 1
+                       },
+                       {
+                          "InstanceType": "r4.large",
+                          "SubnetId": "subnet-cb26e686",
+                          "WeightedCapacity": 1
+                       },     
+                       {
+                          "InstanceType": "t3.micro",
+                          "SubnetId": "subnet-764d7d11",
+                          "WeightedCapacity": 1
+                       },
+                       {
+                          "InstanceType": "t3.micro",
+                          "SubnetId": "subnet-a2c2fd8c",
+                          "WeightedCapacity": 1
+                       },
+                       {
+                          "InstanceType": "t3.micro",
+                          "SubnetId": "subnet-cb26e686",
+                          "WeightedCapacity": 1
+                       }                      
+            ]
+        }
+    ], 
+    "TargetCapacitySpecification": {
+        "TotalTargetCapacity": 12, 
+        "OnDemandTargetCapacity": 0, 
+        "SpotTargetCapacity": 0, 
+        "DefaultTargetCapacityType": "spot"
+    }, 
+    "Type": "request", 
+    "TagSpecifications": [
+        {
+            "ResourceType": "instance", 
+            "Tags": [
+                {
+                    "Key": "Name", 
+                    "Value": "ec2-fleet"
+                }
+            ]
+        }
+    ]
+}

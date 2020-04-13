@@ -14,11 +14,11 @@
       "Overrides": [
         {
           "WeightedCapacity": 1,
-          "SubnetId": "subnet-081386c6e3ace3c8e"
+          "SubnetId": "subnet-0d60f770f347d7949"
         },
         {
           "WeightedCapacity": 1,
-          "SubnetId": "subnet-0d60f770f347d7949"
+          "SubnetId": "subnet-081386c6e3ace3c8e"
         }
       ]
     }

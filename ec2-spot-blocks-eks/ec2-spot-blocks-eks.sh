@@ -101,7 +101,7 @@ aws autoscaling create-auto-scaling-group --auto-scaling-group-name $EKS_SPOT_BL
 	--min-size $MIN_SIZE   --max-size $MAX_SIZE --desired-capacity $DESIRED_CAPACITY
 	
 
-EC2_SPOT_BLOCK_PRIVATE_IP_DNS=ip-192-168-17-13.ec2.internal
+EC2_SPOT_BLOCK_PRIVATE_IP_DNS=ip-192-168-40-46.ec2.internal
 kubectl label nodes $EC2_SPOT_BLOCK_PRIVATE_IP_DNS  spotsa=jp
 
 kubectl apply -f ./monte-carlo-pi-service.yml

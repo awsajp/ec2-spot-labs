@@ -69,3 +69,18 @@
 1. Describe Fleet
 
 	`aws ec2 describe-fleets --fleet-id $FLEETID`
+
+An error occurred (Unsupported) when calling the DeleteFleets operation: Fleet fleet-badc6577-a177-075b-069a-810ae31543ca is instant fleet. This type of fleet cannot be cancelled.
+
+    "TargetCapacitySpecification": {
+        "TotalTargetCapacity": 12, 
+        "OnDemandTargetCapacity": 0, 
+        "SpotTargetCapacity": 0, 
+        "DefaultTargetCapacityType": "spot"
+        
+        all 12 spot m4.large 1c
+        
+                "SingleInstanceType": false, 
+        "SingleAvailabilityZone": true
+        
+        all 6 spot m4.large 1c

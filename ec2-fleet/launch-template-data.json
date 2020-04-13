@@ -1,0 +1,40 @@
+{
+    "LaunchTemplateName": "ec2-fleet-lt", 
+    "VersionDescription": "v1", 
+    "LaunchTemplateData": {
+        "EbsOptimized": true, 
+        "ImageId": "ami-0323c3dd2da7fb37d", 
+        "InstanceType": "m5.large", 
+        "KeyName": "awsajp_keypair", 
+        "Monitoring": {
+            "Enabled": true
+        }, 
+        "UserData": "IyEvYmluL2Jhc2gKCnl1bSBpbnN0YWxsIGh0dHBkIC15CmNoa2NvbmZpZyBodHRwZCBvbgppbnN0YW5jZWlkPSQoY3VybCBodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQpCmVjaG8gIkhlbGxvIGZyb20gaW5zdGFuY2UgaWQgJGluc3RhbmNlaWQiID4gL3Zhci93d3cvaHRtbC9pbmRleC5odG1sCnNlcnZpY2UgaHR0cGQgc3RhcnQK", 
+        "TagSpecifications": [
+            {
+                "ResourceType": "instance", 
+                "Tags": [
+                    {
+                        "Key": "Name1", 
+                        "Value": "ec2-fleet-demo"
+                    },
+                    {
+                      "Key": "Env",
+                      "Value": "Test"
+                    }
+                ]
+            }
+        ] 
+    }, 
+    "TagSpecifications": [
+        {
+            "ResourceType": "launch-template", 
+            "Tags": [
+                {
+                    "Key": "Name2", 
+                    "Value": "ec2-fleet-demo"
+                }
+            ]
+        }
+    ]
+}

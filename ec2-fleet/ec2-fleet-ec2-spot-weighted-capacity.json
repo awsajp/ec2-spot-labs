@@ -11,11 +11,7 @@
         "Version": "1"
       },
       "Overrides": [
-        {
-          "InstanceType": "r4.4xlarge",
-          "SubnetId": "subnet-fa2653a3",
-          "WeightedCapacity": 16
-        },
+ 
         {
           "InstanceType": "r4.4xlarge",
           "SubnetId": "subnet-05ef7d72",

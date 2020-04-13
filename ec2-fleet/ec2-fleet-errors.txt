@@ -1,0 +1,108 @@
+{
+    "Instances": [
+        {
+            "LaunchTemplateAndOverrides": {
+                "LaunchTemplateSpecification": {
+                    "Version": "1", 
+                    "LaunchTemplateId": "lt-0258ff7a7ceaaa692"
+                }, 
+                "Overrides": {
+                    "SubnetId": "subnet-a2c2fd8c", 
+                    "InstanceType": "m4.large", 
+                    "WeightedCapacity": 2.0
+                }
+            }, 
+            "Lifecycle": "spot", 
+            "InstanceIds": [
+                "i-069cd1940c3a696a4", 
+                "i-0bbb1160274367611", 
+                "i-04da0302bc32629e6"
+            ], 
+            "InstanceType": "m4.large"
+        }, 
+        {
+            "LaunchTemplateAndOverrides": {
+                "LaunchTemplateSpecification": {
+                    "Version": "1", 
+                    "LaunchTemplateId": "lt-0258ff7a7ceaaa692"
+                }, 
+                "Overrides": {
+                    "SubnetId": "subnet-a2c2fd8c", 
+                    "InstanceType": "r4.large", 
+                    "WeightedCapacity": 2.0
+                }
+            }, 
+            "Lifecycle": "on-demand", 
+            "InstanceIds": [
+                "i-0798b1fca9a76b3f5", 
+                "i-09a7a465795959389", 
+                "i-069ef4436c2e9bacd"
+            ], 
+            "InstanceType": "r4.large"
+        }
+    ], 
+    "Errors": [
+        {
+            "ErrorCode": "InvalidFleetConfiguration", 
+            "LaunchTemplateAndOverrides": {
+                "LaunchTemplateSpecification": {
+                    "Version": "1", 
+                    "LaunchTemplateId": "lt-0258ff7a7ceaaa692"
+                }, 
+                "Overrides": {
+                    "SubnetId": "subnet-764d7d11", 
+                    "InstanceType": "m3.large", 
+                    "WeightedCapacity": 2.0
+                }
+            }, 
+            "Lifecycle": "spot", 
+            "ErrorMessage": "Your requested instance type (m3.large) is not supported in your requested Availability Zone (us-east-1a)."
+        }, 
+        {
+            "ErrorCode": "Unsupported", 
+            "LaunchTemplateAndOverrides": {
+                "LaunchTemplateSpecification": {
+                    "Version": "1", 
+                    "LaunchTemplateId": "lt-0258ff7a7ceaaa692"
+                }, 
+                "Overrides": {
+                    "SubnetId": "subnet-764d7d11", 
+                    "InstanceType": "m3.large", 
+                    "WeightedCapacity": 2.0
+                }
+            }, 
+            "Lifecycle": "on-demand", 
+            "ErrorMessage": "EBS-optimized instances are not supported for your requested configuration. Please check the documentation for supported configurations."
+        }, 
+        {
+            "ErrorCode": "Unsupported", 
+            "LaunchTemplateAndOverrides": {
+                "LaunchTemplateSpecification": {
+                    "Version": "1", 
+                    "LaunchTemplateId": "lt-0258ff7a7ceaaa692"
+                }, 
+                "Overrides": {
+                    "SubnetId": "subnet-cb26e686", 
+                    "InstanceType": "m3.large", 
+                    "WeightedCapacity": 2.0
+                }
+            }, 
+            "Lifecycle": "on-demand", 
+            "ErrorMessage": "EBS-optimized instances are not supported for your requested configuration. Please check the documentation for supported configurations."
+        }
+    ], 
+    "FleetId": "fleet-badc6577-a177-075b-069a-810ae31543ca", 
+    "ResponseMetadata": {
+        "RetryAttempts": 0, 
+        "HTTPStatusCode": 200, 
+        "RequestId": "ab7ed8af-f170-4e3d-8c92-8fb14ae6dd9b", 
+        "HTTPHeaders": {
+            "x-amzn-requestid": "ab7ed8af-f170-4e3d-8c92-8fb14ae6dd9b", 
+            "transfer-encoding": "chunked", 
+            "vary": "accept-encoding", 
+            "server": "AmazonEC2", 
+            "date": "Mon, 13 Apr 2020 11:23:31 GMT", 
+            "content-type": "text/xml;charset=UTF-8"
+        }
+    }
+}

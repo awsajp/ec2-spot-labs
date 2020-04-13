@@ -1,0 +1,42 @@
+{
+    "Instances": [
+        {
+            "LaunchTemplateAndOverrides": {
+                "LaunchTemplateSpecification": {
+                    "Version": "1", 
+                    "LaunchTemplateId": "lt-0258ff7a7ceaaa692"
+                }, 
+                "Overrides": {
+                    "SubnetId": "subnet-764d7d11", 
+                    "InstanceType": "m5.large", 
+                    "WeightedCapacity": 1.0
+                }
+            }, 
+            "Lifecycle": "on-demand", 
+            "InstanceIds": [
+                "i-0b7b9e680eb5fff18", 
+                "i-0cd43a4ee76bb3013", 
+                "i-026802db8f44611f1", 
+                "i-0668fc1426941441b", 
+                "i-034ebcc151f3b06c4", 
+                "i-0ac983cb191ec9e47"
+            ], 
+            "InstanceType": "m5.large"
+        }
+    ], 
+    "Errors": [], 
+    "FleetId": "fleet-10fe4dd7-ab55-a7f1-0692-8b2a5fb85a5b", 
+    "ResponseMetadata": {
+        "RetryAttempts": 0, 
+        "HTTPStatusCode": 200, 
+        "RequestId": "b63fc830-cf5e-4ee8-89b9-bd137a3e70c6", 
+        "HTTPHeaders": {
+            "x-amzn-requestid": "b63fc830-cf5e-4ee8-89b9-bd137a3e70c6", 
+            "transfer-encoding": "chunked", 
+            "vary": "accept-encoding", 
+            "server": "AmazonEC2", 
+            "date": "Mon, 13 Apr 2020 12:05:47 GMT", 
+            "content-type": "text/xml;charset=UTF-8"
+        }
+    }
+}

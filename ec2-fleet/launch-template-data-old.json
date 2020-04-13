@@ -1,0 +1,40 @@
+{
+  
+  "LaunchTemplateName": "ec2-fleet-lt",
+  "VersionDescription": "V1",
+
+  "ImageId": "%ami-id%",
+
+  "InstanceType": "m5.large",
+  "BlockDeviceMappings": [
+        {
+            "DeviceName": "/dev/xvdcz",
+            "Ebs": {
+                "VolumeSize": 22,
+                "VolumeType": "gp2",
+                "DeleteOnTermination": true,
+                "Encrypted": true
+                }
+        }
+    ],
+  "TagSpecifications": [
+    {
+      "ResourceType": "instance",
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "ec2-fleet-demo"
+        },
+        {
+          "Key": "Env",
+          "Value": "Test"
+        }
+      ]
+    }
+  ],
+  "Monitoring": {
+    "Enabled": true
+  },
+  
+  "UserData": "%UserData%"
+}

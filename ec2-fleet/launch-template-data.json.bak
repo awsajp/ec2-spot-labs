@@ -1,0 +1,40 @@
+{
+    "LaunchTemplateName": "ec2-fleet-lt", 
+    "VersionDescription": "v1", 
+    "LaunchTemplateData": {
+        "EbsOptimized": true, 
+        "ImageId": "%ami-id%", 
+        "InstanceType": "m5.large", 
+        "KeyName": "awsajp_keypair", 
+        "Monitoring": {
+            "Enabled": true
+        }, 
+        "UserData": "%UserData%", 
+        "TagSpecifications": [
+            {
+                "ResourceType": "instance", 
+                "Tags": [
+                    {
+                        "Key": "Name1", 
+                        "Value": "ec2-fleet-demo"
+                    },
+                    {
+                      "Key": "Env",
+                      "Value": "Test"
+                    }
+                ]
+            }
+        ] 
+    }, 
+    "TagSpecifications": [
+        {
+            "ResourceType": "launch-template", 
+            "Tags": [
+                {
+                    "Key": "Name2", 
+                    "Value": "ec2-fleet-demo"
+                }
+            ]
+        }
+    ]
+}
