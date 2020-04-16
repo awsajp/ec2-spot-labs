@@ -1,17 +1,13 @@
 {
     "SpotOptions": {
         "AllocationStrategy": "capacity-optimized", 
-        "InstanceInterruptionBehavior": "terminate", 
-        "SingleInstanceType": true, 
-        "SingleAvailabilityZone": true
+        "InstanceInterruptionBehavior": "terminate"
     }, 
     "OnDemandOptions": {
         "AllocationStrategy": "prioritized", 
         "CapacityReservationOptions": {
             "UsageStrategy": "use-capacity-reservations-first"
-        }, 
-        "SingleInstanceType": true, 
-        "SingleAvailabilityZone": true
+        }
     }, 
     "LaunchTemplateConfigs": [
         {
@@ -21,78 +17,79 @@
             }, 
             "Overrides": [
                        {
-                          "InstanceType": "m4.large",
+                          "InstanceType": "c5.9xlarge",
                           "SubnetId": "subnet-764d7d11",
                           "WeightedCapacity": 1
                        },
                        {
-                          "InstanceType": "m4.large",
+                          "InstanceType": "c5.9xlarge",
                           "SubnetId": "subnet-a2c2fd8c",
                           "WeightedCapacity": 1
                        },
                        {
-                          "InstanceType": "m4.large",
+                          "InstanceType": "c5.9xlarge",
                           "SubnetId": "subnet-cb26e686",
                           "WeightedCapacity": 1
                        },                       
                        {
-                          "InstanceType": "m5.large",
+                          "InstanceType": "c5.9xlarge",
+                          "SubnetId": "subnet-7acbf626",
+                          "WeightedCapacity": 1
+                       },
+                       {
+                          "InstanceType": "c5.9xlarge",
+                          "SubnetId": "subnet-93d490ad",
+                          "WeightedCapacity": 1
+                       },
+                       {
+                          "InstanceType": "c5.9xlarge",
+                          "SubnetId": "subnet-313ad03f",
+                          "WeightedCapacity": 1
+                       },
+                       {
+                          "InstanceType": "c4.8xlarge",
                           "SubnetId": "subnet-764d7d11",
                           "WeightedCapacity": 1
                        },
                        {
-                          "InstanceType": "m5.large",
+                          "InstanceType": "c4.8xlarge",
                           "SubnetId": "subnet-a2c2fd8c",
                           "WeightedCapacity": 1
                        },
                        {
-                          "InstanceType": "m5.large",
+                          "InstanceType": "c4.8xlarge",
                           "SubnetId": "subnet-cb26e686",
                           "WeightedCapacity": 1
-                       }, 
+                       },                       
                        {
-                          "InstanceType": "r4.large",
-                          "SubnetId": "subnet-764d7d11",
+                          "InstanceType": "c4.8xlarge",
+                          "SubnetId": "subnet-7acbf626",
                           "WeightedCapacity": 1
                        },
                        {
-                          "InstanceType": "r4.large",
-                          "SubnetId": "subnet-a2c2fd8c",
+                          "InstanceType": "c4.8xlarge",
+                          "SubnetId": "subnet-93d490ad",
                           "WeightedCapacity": 1
                        },
                        {
-                          "InstanceType": "r4.large",
-                          "SubnetId": "subnet-cb26e686",
+                          "InstanceType": "c4.8xlarge",
+                          "SubnetId": "subnet-313ad03f",
                           "WeightedCapacity": 1
-                       },     
-                       {
-                          "InstanceType": "t3.micro",
-                          "SubnetId": "subnet-764d7d11",
-                          "WeightedCapacity": 1
-                       },
-                       {
-                          "InstanceType": "t3.micro",
-                          "SubnetId": "subnet-a2c2fd8c",
-                          "WeightedCapacity": 1
-                       },
-                       {
-                          "InstanceType": "t3.micro",
-                          "SubnetId": "subnet-cb26e686",
-                          "WeightedCapacity": 1
-                       }                      
+                       } 
             ]
         }
     ], 
     "TargetCapacitySpecification": {
-        "TotalTargetCapacity": 12, 
-        "OnDemandTargetCapacity": 0, 
-        "SpotTargetCapacity": 0, 
+        "TotalTargetCapacity": 6, 
+        "OnDemandTargetCapacity": 3, 
+        "SpotTargetCapacity": 3, 
         "DefaultTargetCapacityType": "spot"
     }, 
-    "Type": "maintain", 
+  "Type": "maintain",
+  "ReplaceUnhealthyInstances": true,
     "TagSpecifications": [
         {
-            "ResourceType": "instance", 
+            "ResourceType": "fleet", 
             "Tags": [
                 {
                     "Key": "Name", 
