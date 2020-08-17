@@ -1,0 +1,24 @@
+{
+    "jobDefinitionName": "ec2-spot-batch-job-definition",
+    "type": "container",
+    "parameters": {},
+    "containerProperties": {
+        "image": "000474600478.dkr.ecr.us-east-1.amazonaws.com/ec2-spot-batch",
+        "vcpus": 2,
+        "memory": 2000,
+        "environment": [
+            {
+                "name": "INPUT",
+                "value": "ec2-spot.png"
+            },
+            {
+                "name": "S3BUCKET",
+                "value": "ec2-spot-batch-unmanaged-s3bucket-1c57mysou217o"
+            },
+            {
+                "name": "REGION",
+                "value": "us-east-1"
+            }            
+        ]
+    }
+}

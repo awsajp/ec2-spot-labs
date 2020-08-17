@@ -1,4 +1,4 @@
-FROM amazonlinux:1
+FROM amazonlinux:latest
 
 RUN yum -y --security update
 
@@ -7,6 +7,10 @@ RUN yum -y install \
   ImageMagick \
   util-linux
 
-COPY convert-worker.sh /usr/local/bin/convert-worker.sh
+COPY /convert-worker.sh /app
+ 
+WORKDIR /app
 
-ENTRYPOINT ["/usr/local/bin/convert-worker.sh"]
+RUN chmod +x ./app/convert-worker.sh
+
+ENTRYPOINT ["/app/convert-worker.sh"]
